@@ -1,0 +1,13 @@
+flowchart LR
+    A[PR paths + diff] --> B[Step 1: static shortlist up to 8]
+    B --> C[Step 2: LLM picker]
+    C --> D{LLM returns in 3s?}
+    D -->|no| E[Fall back: top 3 by priority]
+    D -->|yes| F{Picks are in shortlist?}
+    F -->|no| G[Drop bad picks, log audit]
+    F -->|yes| H[Final roster: top 3]
+    E --> H
+    G --> H
+    style A fill:#e3f2fd
+    style C fill:#fff9c4
+    style H fill:#c8e6c9

@@ -1,0 +1,22 @@
+flowchart TB
+    subgraph Idea1["Idea 1 — Static table"]
+      F1[Bad scope yaml] --> R1[CI fails at build - fail loud]
+      F2[Two skills claim same path] --> R2[Sort by ID - deterministic]
+      F3[Whitespace only PR] --> R3[Skill still runs - wasted LLM]
+    end
+    subgraph Idea2["Idea 2 — Classifier LLM"]
+      F4[Picker times out] --> R4[Fall back to Idea 1 top 3]
+      F5[Prompt injection in diff] --> R5[Steers routing - REAL RISK]
+      F6[Picker returns bad ID] --> R6[Drop and log audit]
+      F7[Non-deterministic] --> R7[Same PR routes differently]
+    end
+    subgraph Idea3["Idea 3 — Trigger graph"]
+      F8[Diff fetch times out] --> R8[Fall back to path-only]
+      F9[Regex too broad] --> R9[Wastes LLM budget]
+      F10[Regex too slow] --> R10[100 ms per-trigger cap]
+      F11[Tree-sitter fails on file] --> R11[Skip AST for that file]
+    end
+    style F5 fill:#ffcdd2
+    style R5 fill:#c62828,color:#fff
+    style F7 fill:#ffcdd2
+    style R7 fill:#c62828,color:#fff

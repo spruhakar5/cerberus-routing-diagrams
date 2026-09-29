@@ -1,0 +1,22 @@
+sequenceDiagram
+    participant Dev as Developer
+    participant GH as GitHub
+    participant Relay as Lambda relay
+    participant Q as SQS queue
+    participant W as Cerberus worker
+    participant R as Router
+    participant S as K8s sandbox
+    participant LLM as Specialist LLM
+    participant PR as PR comment
+
+    Dev->>GH: open or push PR
+    GH->>Relay: webhook
+    Relay->>Q: enqueue event
+    Q-->>W: worker polls
+    W->>R: (repo, changed paths, diff)
+    R-->>W: roster of skills to run
+    W->>S: allocate sandbox
+    S->>LLM: run each skill
+    LLM-->>S: findings
+    S-->>W: pass complete
+    W->>PR: post comment

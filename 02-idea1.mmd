@@ -1,0 +1,14 @@
+flowchart LR
+    A[PR paths] --> B{repo in table?}
+    B -->|no| C[Default skill only]
+    B -->|yes| D[Add base skills]
+    D --> E[Glob match each rule]
+    E --> F{any file matches?}
+    F -->|yes| G["Add that rule&apos;s skills"]
+    F -->|no| H[Skip rule]
+    C --> I[Cap at 3, sort by priority]
+    G --> I
+    H --> I
+    I --> J[Final roster]
+    style A fill:#e3f2fd
+    style J fill:#c8e6c9

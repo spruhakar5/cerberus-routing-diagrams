@@ -1,0 +1,17 @@
+gantt
+    title Cerberus routing rollout (weeks from today)
+    dateFormat X
+    axisFormat W%W
+    section Phase 0
+    PRs 364, 368, 369 merge  :done, p0, 0, 1
+    section Phase 1 — Idea 1
+    scope.yaml + CI compiler    :active, p1a, 1, 3
+    Onboarding pipeline docs    :p1b, 3, 4
+    section Phase 2 — Hardening
+    CODEOWNERS passive audit    :p2a, 4, 6
+    Scope-drift telemetry       :p2b, 5, 7
+    section Phase 3 — Idea 3 base
+    Trigger types in schema     :p3a, 7, 10
+    First regex trigger         :p3b, 10, 12
+    section Phase 4 — Idea 3 rollout
+    Teams opt in to regex/AST   :p4, 12, 20
