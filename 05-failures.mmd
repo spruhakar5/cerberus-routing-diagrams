@@ -1,16 +1,17 @@
 flowchart TB
-    subgraph Idea1["Idea 1 — Static table"]
+    subgraph Idea1["Architecture A - Static table"]
       F1[Bad scope yaml] --> R1[CI fails at build - fail loud]
       F2[Two skills claim same path] --> R2[Sort by ID - deterministic]
       F3[Whitespace only PR] --> R3[Skill still runs - wasted LLM]
+      F3b[Cross-cutting PR fires 10+ skills] --> R3b[Sandbox batches - +30-90s latency]
     end
-    subgraph Idea2["Idea 2 — Classifier LLM"]
-      F4[Picker times out] --> R4[Fall back to Idea 1 top 3]
+    subgraph Idea2["Architecture B - Classifier LLM"]
+      F4[Picker times out] --> R4[Fall back to full static roster]
       F5[Prompt injection in diff] --> R5[Steers routing - REAL RISK]
       F6[Picker returns bad ID] --> R6[Drop and log audit]
       F7[Non-deterministic] --> R7[Same PR routes differently]
     end
-    subgraph Idea3["Idea 3 — Trigger graph"]
+    subgraph Idea3["Architecture C - Trigger graph"]
       F8[Diff fetch times out] --> R8[Fall back to path-only]
       F9[Regex too broad] --> R9[Wastes LLM budget]
       F10[Regex too slow] --> R10[100 ms per-trigger cap]

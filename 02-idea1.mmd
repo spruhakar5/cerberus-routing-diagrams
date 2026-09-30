@@ -6,9 +6,9 @@ flowchart LR
     E --> F{any file matches?}
     F -->|yes| G["Add that rule&apos;s skills"]
     F -->|no| H[Skip rule]
-    C --> I[Cap at 3, sort by priority]
+    C --> I[Admit every matching skill]
     G --> I
     H --> I
-    I --> J[Final roster]
+    I --> J[Final roster - no cap]
     style A fill:#e3f2fd
     style J fill:#c8e6c9

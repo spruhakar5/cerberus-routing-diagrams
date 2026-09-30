@@ -1,11 +1,11 @@
 flowchart LR
-    A[PR paths + diff] --> B[Step 1: static shortlist up to 8]
-    B --> C[Step 2: LLM picker]
+    A[PR paths + diff] --> B[Step 1: static shortlist of candidates]
+    B --> C[Step 2: LLM classifier ranks candidates]
     C --> D{LLM returns in 3s?}
-    D -->|no| E[Fall back: top 3 by priority]
+    D -->|no| E[Fall back: full static roster]
     D -->|yes| F{Picks are in shortlist?}
-    F -->|no| G[Drop bad picks, log audit]
-    F -->|yes| H[Final roster: top 3]
+    F -->|no| G[Drop hallucinated picks, log audit]
+    F -->|yes| H[Final roster - classifier-ranked]
     E --> H
     G --> H
     style A fill:#e3f2fd
